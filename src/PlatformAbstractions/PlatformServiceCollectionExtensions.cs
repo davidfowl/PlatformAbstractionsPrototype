@@ -10,8 +10,8 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddPlatformAbstractions(this IServiceCollection services)
         {
-            services.AddInstance(EnvironmentServices.Default.Application);
-            services.AddInstance(EnvironmentServices.Default.Runtime);
+            services.AddInstance(PlatformServices.Default.Application);
+            services.AddInstance(PlatformServices.Default.Runtime);
             return services;
         }
     }

@@ -4,15 +4,23 @@ using System.Runtime.Versioning;
 
 namespace Microsoft.Extensions.PlatformAbstractions
 {
-    public abstract class EnvironmentServices
+    public abstract class PlatformServices
     {
-        public static readonly EnvironmentServices Default = new DefaultEnvironmentServices();
+        public static PlatformServices Default = new DefaultEnvironmentServices();
 
         public abstract IApplicationEnvironment Application { get; }
 
         public abstract IRuntimeEnvironment Runtime { get; }
 
-        private class DefaultEnvironmentServices : EnvironmentServices
+        public abstract IAssemblyLoaderContainer LoaderContainer { get; }
+
+        public static void SetDefault(PlatformServices @default)
+        {
+            // TODO: Thread safety
+            Default = @default;
+        }
+
+        private class DefaultEnvironmentServices : PlatformServices
         {
             public DefaultEnvironmentServices()
             {
@@ -21,6 +29,8 @@ namespace Microsoft.Extensions.PlatformAbstractions
             }
 
             public override IApplicationEnvironment Application { get; }
+
+            public override IAssemblyLoaderContainer LoaderContainer { get; }
 
             public override IRuntimeEnvironment Runtime { get; }
         }
