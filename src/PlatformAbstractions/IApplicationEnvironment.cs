@@ -12,6 +12,6 @@ namespace Microsoft.Extensions.PlatformAbstractions
 
         string BasePath { get; }
 
-        FrameworkName RuntimeFramework { get; }
+        FrameworkName TargetFramework { get; }
     }
 }

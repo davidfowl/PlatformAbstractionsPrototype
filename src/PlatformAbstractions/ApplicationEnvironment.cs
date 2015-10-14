@@ -33,7 +33,7 @@ namespace Microsoft.Extensions.PlatformAbstractions
             }
         }
 
-        public FrameworkName RuntimeFramework
+        public FrameworkName TargetFramework
         {
             get
             {
